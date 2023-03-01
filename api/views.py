@@ -35,7 +35,7 @@ class StudentList(APIView):
     def get(self, request, format=None):
         student= StudentModel.objects.all()
         serializer=StudentSerializers(student, many=True)
-        # print(".........................",serializer.data)
+        print(".........................",serializer.data)
     # try:
         students_group, created = Group.objects.get_or_create(name='Students')
         for data in student:
