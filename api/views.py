@@ -1,3 +1,5 @@
+
+#This us gonna be merged by mod1 to the master
 # Create your views here.
 from django.http import JsonResponse
 from .models import StudentModel,SubjectModel, TeacherModel
