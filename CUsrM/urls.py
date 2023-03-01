@@ -27,7 +27,7 @@ router.register('teachertapi',TeacherView, basename="teacher")
 
 urlpatterns = [
     
-    path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    path('swagger/<str:format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swag/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path("", include(router.urls)),
     path('admin/', admin.site.urls),
