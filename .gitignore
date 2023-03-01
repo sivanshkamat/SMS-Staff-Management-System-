@@ -1,2 +1,2 @@
 thisisgonnabeignore.txt
-__pycache__/
+*.pyc
