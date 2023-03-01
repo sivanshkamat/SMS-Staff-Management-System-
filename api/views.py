@@ -36,22 +36,25 @@ class StudentList(APIView):
         student= StudentModel.objects.all()
         serializer=StudentSerializers(student, many=True)
         print(".........................",serializer.data)
-    # try:
-        students_group, created = Group.objects.get_or_create(name='Students')
-        for data in student:
-        # Create the user object
-            user = CustomUser.objects.create_user(
-                # username=data['email'],  # Use the email as the username
-                email=data.emailf,
-                password='12345',
-                first_name=data.name.split()[0],
-                last_name=data.name.split()[1],
-                is_staff=True,
-            )
-        user.groups.add(students_group)
-        return serializer.data
-        # except:
-        #     return serializer.data
+        try:
+            students_group, created = Group.objects.get_or_create(name='students_group')
+            for data in student:
+            # Create the user object
+                user = CustomUser.objects.create_user(
+                    # username=data['email'],  # Use the email as the username
+                    email=data.email,
+                    password='12345',
+                    first_name=data.name.split()[0],
+                    last_name=data.name.split()[1],
+                    is_staff=True,
+                )
+                user.groups.add(students_group)
+            msg = {
+                "details": "sucsessfully created user"
+            }
+            return Response(msg)
+        except:
+            return Response("Error Occurs")
 # # Create the "Students" group
 # students_group, created = Group.objects.get_or_create(name='Students')
 # # Loop through the list of student data and create a user for each one
